@@ -18,6 +18,7 @@ static const char unknown_str[] = "n/a";
  *                                                     NULL on OpenBSD/FreeBSD
  * battery_remaining   battery remaining HH:MM         battery name (BAT0)
  *                                                     NULL on OpenBSD/FreeBSD
+ * cat                 read arbitrary file             path
  * cpu_perc            cpu usage in percent            NULL
  * cpu_freq            cpu frequency in MHz            NULL
  * datetime            date and time                   format string (%F %T)
@@ -45,7 +46,6 @@ static const char unknown_str[] = "n/a";
  * ram_total           total memory size in GB         NULL
  * ram_used            used memory in GB               NULL
  * run_command         custom shell command            command (echo foo)
- * separator           string to echo                  NULL
  * swap_free           free swap in GB                 NULL
  * swap_perc           swap usage in percent           NULL
  * swap_total          total swap size in GB           NULL
@@ -59,15 +59,15 @@ static const char unknown_str[] = "n/a";
  * uptime              system uptime                   NULL
  * username            username of current user        NULL
  * vol_perc            OSS/ALSA volume in percent      mixer file (/dev/mixer)
- *                                                     NULL on OpenBSD
+ *                                                     NULL on OpenBSD/FreeBSD
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  */
 static const struct arg args[] = {
 	/* function format          argument */
-    { cpu_perc, " ﬙ %s | ",    NULL },
-    { ram_perc, " %s | ",    NULL },
-    { disk_used, " %s | ",  "/" },
-	{ datetime, " %s | ",         "%F %T" },
-    { keymap,    "%s ",           NULL},
+  { cpu_perc, " ﬙ %s | ",    NULL },
+  { ram_perc, " %s | ",    NULL },
+  { disk_used, " %s | ",  "/" },
+	{ datetime, " %s | ", "%F %T" },
+  { keymap,    "%s ", NULL},
 };
